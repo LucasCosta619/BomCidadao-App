@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:title="Opções">
+            <menu>
+                <item
+                    android:id="@+id/nav_config"
+                    android:icon="@drawable/ic_config_icon"
+                    android:title="Configurações" />
+                <item
+                    android:id="@+id/nav_contatos"
+                    android:icon="@android:drawable/stat_sys_phone_call"
+                    android:title="Telefones" />
+                <item
+                    android:id="@+id/nav_termos"
+                    android:icon="@drawable/ic_term_icon"
+                    android:title="Termos de Uso" />
+            </menu>
+        </item>
+    </group>
+</menu>
