@@ -18,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -33,6 +34,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.wwsystems.bomcidadao.R;
 
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -44,6 +47,8 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
     private GoogleApiClient mGoogleApiCliente;
     private String endereco = "";
     private String rua, bairro, cidade, estado;
+    private String latitude;
+    private String longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,8 +92,8 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
             //Verifica se o gps está ligago
             if (gps.canGetLocation()) {
 
-                LatLng cidade = new LatLng(gps.getLatitude(), gps.getLongitude());
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(cidade));
+                LatLng c = new LatLng(gps.getLatitude(), gps.getLongitude());
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(c));
                 mMap.animateCamera(CameraUpdateFactory.zoomTo(16), 2000, null);
 
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -104,13 +109,8 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mMap.setMyLocationEnabled(true);
                 mMap.setTrafficEnabled(true);
 
-                final Marker meuMarcadorMarker = mMap.addMarker(new MarkerOptions().position(cidade).draggable(true));
-                meuMarcadorMarker.setTitle("Minha Casa");
-                meuMarcadorMarker.setSnippet("Esta é minha residência...");
+                final Marker meuMarcadorMarker = mMap.addMarker(new MarkerOptions().position(c).draggable(true));
 
-                final Geocoder geocoder;
-                final List<Address> addresses;
-                geocoder = new Geocoder(this, Locale.getDefault());
 
 
                 mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
@@ -127,15 +127,46 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
                     @Override
                     public void onMarkerDragEnd(Marker marker) {
 
+                        Geocoder gc = new Geocoder(MapaActivity.this);
+                        LatLng ll = marker.getPosition();
+                        List<Address> list = null;
+                        try {
+                            list = gc.getFromLocation(ll.latitude, ll.longitude, 1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        Address add = list.get(0);
+                        marker.setTitle(add.getAddressLine(0));
+                        marker.setSnippet(add.getPostalCode());
+                        marker.showInfoWindow();
 
-                        String latlangMarcado = marker.getPosition().toString();
+                        endereco = add.getAddressLine(0);
+                        latitude = String.valueOf(add.getLatitude());
+                        longitude = String.valueOf(add.getLongitude());
 
-                        String arrayLatLangMarcado [] = new String[1];
-                        arrayLatLangMarcado = latlangMarcado.split(",");
+                        cidade = add.getLocality();
+                        bairro = add.getSubLocality();
+                        if(cidade == null){
+                            String quebrado[] =  endereco.split(",");
 
-                        Toast.makeText(MapaActivity.this, arrayLatLangMarcado[0] + arrayLatLangMarcado[1], Toast.LENGTH_SHORT).show();
+                            if(quebrado.length==2){
 
-                        //addresses = geocoder.getFromLocation()
+                                cidade = quebrado[0];
+
+                            }else if(quebrado.length==3){
+
+                                cidade = quebrado[1];
+                            }
+                            else if(quebrado.length==4){
+
+                                cidade = quebrado[1];
+                            }
+
+                            else if(quebrado.length==5){
+                                cidade = quebrado[2];
+                            }
+                        }
+
 
                     }
                 });
