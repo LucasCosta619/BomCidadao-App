@@ -1,4 +1,4 @@
-package com.wwsystems.bomcidado.activity;
+package com.wwsystems.bomcidadao.activity;
 
 import android.Manifest;
 import android.app.Service;

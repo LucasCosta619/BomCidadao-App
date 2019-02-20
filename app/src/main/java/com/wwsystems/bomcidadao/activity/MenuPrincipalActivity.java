@@ -1,4 +1,4 @@
-package com.wwsystems.bomcidado.activity;
+package com.wwsystems.bomcidadao.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
-import com.wwsystems.bomcidado.R;
+import com.wwsystems.bomcidadao.R;
 
 public class MenuPrincipalActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

@@ -1,4 +1,4 @@
-package com.wwsystems.bomcidado;
+package com.wwsystems.bomcidadao;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

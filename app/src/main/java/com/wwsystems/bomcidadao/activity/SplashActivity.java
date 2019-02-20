@@ -1,11 +1,11 @@
-package com.wwsystems.bomcidado.activity;
+package com.wwsystems.bomcidadao.activity;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.wwsystems.bomcidado.R;
+import com.wwsystems.bomcidadao.R;
 
 public class SplashActivity extends AppCompatActivity {
 

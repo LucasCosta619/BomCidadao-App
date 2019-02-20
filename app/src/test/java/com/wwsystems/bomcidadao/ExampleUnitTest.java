@@ -1,4 +1,4 @@
-package com.wwsystems.bomcidado;
+package com.wwsystems.bomcidadao;
 
 import org.junit.Test;
 
