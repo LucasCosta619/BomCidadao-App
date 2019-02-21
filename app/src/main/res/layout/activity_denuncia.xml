@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.DenunciaActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -19,5 +20,105 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="Localização:"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvLocalizacaoDenuncia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/transparent"
+            android:text="Rua Delmiro Gouveia"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:background="@android:color/transparent"
+                android:text="Tipo da Denúncia:"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTipoDenuncia"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:background="@android:color/transparent"
+                android:text="Saúde"
+                android:textColor="#000"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:labelFor="@id/btAdicionarMidia"
+            android:text="Descrição:"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:id="@+id/tfDescricaoDenuncia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:bootstrapBrand="success"
+            app:bootstrapSize="lg"
+            app:showOutline="false" />
+
+        <Button
+            android:id="@+id/btAdicionarMidia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_plus_icon_green_24"
+            android:drawableLeft="@drawable/ic_plus_icon_green_24"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp"
+            android:text="ADICIONAR MÍDIA"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/btSalvarDenunciar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:text="SALVAR"
+            app:bootstrapBrand="success"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
+            app:roundedCorners="true"
+            app:showOutline="false" />
+
+    </LinearLayout>
 
 </LinearLayout>

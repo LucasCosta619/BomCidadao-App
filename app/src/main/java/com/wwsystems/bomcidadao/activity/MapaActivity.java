@@ -54,8 +54,7 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.mapa);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapa);
         mapFragment.getMapAsync(this);
 
         fabSalvarDenuncia = findViewById(R.id.fabSalvarDenuncia);
@@ -112,7 +111,6 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
                 final Marker meuMarcadorMarker = mMap.addMarker(new MarkerOptions().position(c).draggable(true));
 
 
-
                 mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
                     @Override
                     public void onMarkerDragStart(Marker marker) {
@@ -146,23 +144,20 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                         cidade = add.getLocality();
                         bairro = add.getSubLocality();
-                        if(cidade == null){
-                            String quebrado[] =  endereco.split(",");
+                        if (cidade == null) {
+                            String quebrado[] = endereco.split(",");
 
-                            if(quebrado.length==2){
+                            if (quebrado.length == 2) {
 
                                 cidade = quebrado[0];
 
-                            }else if(quebrado.length==3){
+                            } else if (quebrado.length == 3) {
 
                                 cidade = quebrado[1];
-                            }
-                            else if(quebrado.length==4){
+                            } else if (quebrado.length == 4) {
 
                                 cidade = quebrado[1];
-                            }
-
-                            else if(quebrado.length==5){
+                            } else if (quebrado.length == 5) {
                                 cidade = quebrado[2];
                             }
                         }
@@ -172,11 +167,10 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
                 });
 
 
-
             } else {
                 AlertDialog erroLocation = new AlertDialog.Builder(this).create();
                 erroLocation.setTitle("Localização não encontrada!");
-                erroLocation.setMessage("Sua Localização não foi encontrada!! Tente novamente!");
+                erroLocation.setMessage("Sua Localização não foi encontrada, por favor tente novamente!");
                 erroLocation.show();
                 gps.showSettingsAlert();
             }
@@ -205,21 +199,16 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-
         boolean enabled = service.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
         if (!enabled) {
             finish();
-            Toast.makeText(MapaActivity.this, "Para utilizar o mapa, por favor, ative o GPS", Toast.LENGTH_LONG).show();
+            Toast.makeText(MapaActivity.this, "Para utilizar o mapa, por favor ative o GPS", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
             startActivity(intent);
         } else {
-
             getLocalization();
-
         }
-
-
     }
 
     @Override

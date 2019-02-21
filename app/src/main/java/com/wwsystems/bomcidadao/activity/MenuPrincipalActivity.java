@@ -29,10 +29,10 @@ public class MenuPrincipalActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button bt1 = findViewById(R.id.bt1);
-        Button bt2 = findViewById(R.id.bt2);
-        Button bt3 = findViewById(R.id.bt3);
-        Button bt4 = findViewById(R.id.bt4);
+        bt1 = findViewById(R.id.bt1);
+        bt2 = findViewById(R.id.bt2);
+        bt3 = findViewById(R.id.bt3);
+        bt4 = findViewById(R.id.bt4);
 
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,15 +59,6 @@ public class MenuPrincipalActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 abrirMapas();
-            }
-        });
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             }
         });
 

@@ -28,7 +28,7 @@
         android:layout_gravity="bottom|center"
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="@color/colorPrimaryDark"
-        app:srcCompat="@android:drawable/ic_menu_save"
+        app:srcCompat="@drawable/ic_save_white_24"
         tools:ignore="VectorDrawableCompat" />
 
     <include layout="@layout/content_mapa" />
