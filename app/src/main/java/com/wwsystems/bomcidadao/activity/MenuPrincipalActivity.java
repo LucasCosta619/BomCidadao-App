@@ -123,6 +123,9 @@ public class MenuPrincipalActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_contatos) {
 
+            Intent intent = new Intent(MenuPrincipalActivity.this, TelefoneActivity.class);
+            startActivity(intent);
+
         } else if (id == R.id.nav_termos) {
 
         }

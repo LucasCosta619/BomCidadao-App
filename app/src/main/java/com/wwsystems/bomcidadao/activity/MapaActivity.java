@@ -63,6 +63,7 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MapaActivity.this, DenunciaActivity.class);
+                intent.putExtra("localizacao", endereco);
                 startActivity(intent);
             }
         });
@@ -125,10 +126,11 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
                     @Override
                     public void onMarkerDragEnd(Marker marker) {
 
+                        List<Address> list = null;
                         Geocoder gc = new Geocoder(MapaActivity.this);
                         LatLng ll = marker.getPosition();
-                        List<Address> list = null;
                         try {
+
                             list = gc.getFromLocation(ll.latitude, ll.longitude, 1);
                         } catch (IOException e) {
                             e.printStackTrace();
